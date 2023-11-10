@@ -14,12 +14,11 @@
  * limitations under the License.
  */
 
-variable "project_id" {
-  description = "The ID of the project in which to provision resources."
-  type        = string
-}
+module "artifact_registry" {
+  source = "../.."
 
-variable "bucket_name" {
-  description = "The name of the bucket to create."
-  type        = string
+  project_id    = var.project_id
+  location      = "us-central1"
+  format        = "DOCKER"
+  repository_id = "first-docker-repo"
 }
