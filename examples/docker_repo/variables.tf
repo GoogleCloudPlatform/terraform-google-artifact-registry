@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-output "bucket_name" {
-  description = "The name of the bucket."
-  value       = module.artifact_registry.bucket_name
+variable "project_id" {
+  description = "The ID of the project in which to provision resources."
+  type        = string
 }

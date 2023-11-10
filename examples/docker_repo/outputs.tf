@@ -14,9 +14,7 @@
  * limitations under the License.
  */
 
-module "artifact_registry" {
-  source = "../.."
-
-  project_id  = var.project_id
-  bucket_name = var.bucket_name
+output "artifact_id" {
+  description = "An identifier for the docker repo"
+  value       = module.artifact_registry.artifact_id
 }
