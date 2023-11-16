@@ -144,3 +144,29 @@ variable "cleanup_policies" {
   description = "Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be under 128 characters in length."
   default     = {}
 }
+
+# VPC SC
+variable "enable_vpcsc_policy" {
+  type        = bool
+  description = "Enable VPC SC policy"
+  default     = false
+}
+
+variable "vpcsc_policy" {
+  type        = string
+  description = "The VPC SC policy for project and location. Possible values are: DENY, ALLOW"
+  default     = "ALLOW"
+}
+
+// IAM
+variable "members" {
+  type        = map(list(string))
+  description = "Artifact Registry Reader and Writer roles for Users/SAs. Key names must be readers and/or writers"
+  default     = {}
+  validation {
+    condition = alltrue([
+      for key in keys(var.members) : contains(["readers", "writers"], key)
+    ])
+    error_message = "The supported keys are readers and writers."
+  }
+}

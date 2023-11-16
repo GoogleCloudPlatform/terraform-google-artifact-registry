@@ -14,7 +14,16 @@
  * limitations under the License.
  */
 
-variable "project_id" {
-  description = "The ID of the project in which to provision resources."
-  type        = string
+module "artifact_registry" {
+  source = "../.."
+
+  project_id    = var.project_id
+  location      = var.repo_location
+  format        = "DOCKER"
+  repository_id = "first-docker-repo"
+
+  members = {
+    readers = ["user:prabhuramasamy@google.com"]
+    writers = ["user:prabhuramasamy@google.com"]
+  }
 }

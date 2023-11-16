@@ -14,11 +14,14 @@
  * limitations under the License.
  */
 
-terraform {
-  required_providers {
-    google = {
-      source = "hashicorp/google"
-    }
-  }
-  required_version = ">= 0.13"
+variable "project_id" {
+  description = "The ID of the project in which to provision resources."
+  type        = string
+  default = "dc-in-lz-pr-poc-01"
+}
+
+variable "repo_location" {
+  description = "The location of this Artifact Registry Repo"
+  type        = string
+  default     = "us-central1"
 }

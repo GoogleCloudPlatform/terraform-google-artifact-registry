@@ -14,11 +14,22 @@
  * limitations under the License.
  */
 
-module "artifact_registry" {
-  source = "../.."
+output "artifact_id" {
+  description = "An identifier for the docker repo"
+  value       = module.artifact_registry.artifact_id
+}
 
-  project_id    = var.project_id
-  location      = "us-central1"
-  format        = "DOCKER"
-  repository_id = "first-docker-repo"
+output "create_time" {
+  description = "The time when the repository was created"
+  value       = module.artifact_registry.create_time
+}
+
+output "project_id" {
+  description = "Project ID"
+  value       = var.project_id
+}
+
+output "repo_location" {
+  description = "Location of the Artifat Registry"
+  value       = var.repo_location
 }
