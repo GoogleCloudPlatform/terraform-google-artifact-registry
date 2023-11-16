@@ -1,6 +1,6 @@
-# Docker Repo
+# Artifact Registry - Docker Repo
 
-This example illustrates how to use the `artifact-registry` module.
+This example illustrates how to use the `artifact-registry` module to create a `DOCKER` format repository to store container images.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Inputs
