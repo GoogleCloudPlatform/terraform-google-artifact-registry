@@ -8,12 +8,16 @@ This example illustrates how to use the `artifact-registry` module.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | project\_id | The ID of the project in which to provision resources. | `string` | n/a | yes |
+| repo\_location | The location of this Artifact Registry Repo | `string` | `"us-central1"` | no |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
 | artifact\_id | An identifier for the docker repo |
+| create\_time | The time when the repository was created |
+| project\_id | Project ID |
+| repo\_location | Location of the Artifat Registry |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 

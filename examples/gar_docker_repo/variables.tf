@@ -14,7 +14,13 @@
  * limitations under the License.
  */
 
-output "artifact_id" {
-  description = "An identifier for the docker repo"
-  value       = module.artifact_registry.artifact_id
+variable "project_id" {
+  description = "The ID of the project in which to provision resources."
+  type        = string
+}
+
+variable "repo_location" {
+  description = "The location of this Artifact Registry Repo"
+  type        = string
+  default     = "us-central1"
 }

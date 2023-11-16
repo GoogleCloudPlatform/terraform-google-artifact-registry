@@ -56,16 +56,19 @@ Functional examples are included in the
 | cleanup\_policy\_dry\_run | If true, the cleanup pipeline is prevented from deleting versions in this repository | `bool` | `false` | no |
 | description | The user-provided description of the repository | `string` | `null` | no |
 | docker\_config | Docker repository config contains repository level configuration for the repositories of docker type | <pre>object({<br>    immutable_tags = optional(bool)<br>  })</pre> | `null` | no |
+| enable\_vpcsc\_policy | Enable VPC SC policy | `bool` | `false` | no |
 | format | The format of packages that are stored in the repository. You can only create alpha formats if you are a member of the alpha user group. | `string` | n/a | yes |
 | kms\_key\_name | The Cloud KMS resource name of the customer managed encryption key that’s used to encrypt the contents of the Repository. Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. This value may not be changed after the Repository has been created | `string` | `null` | no |
 | labels | Lables for the repository | `map(string)` | `{}` | no |
 | location | The name of the location this repository is located in | `string` | n/a | yes |
 | maven\_config | MavenRepositoryConfig is maven related repository details. Provides additional configuration details for repositories of the maven format type. | <pre>object({<br>    allow_snapshot_overwrites = optional(bool)<br>    version_policy            = optional(string)<br>  })</pre> | `null` | no |
+| members | Artifact Registry Reader and Writer roles for Users/SAs. Key names must be readers and/or writers | `map(list(string))` | `{}` | no |
 | mode | The mode configures the repository to serve artifacts from different sources. Default value is STANDARD\_REPOSITORY. Possible values are: STANDARD\_REPOSITORY, VIRTUAL\_REPOSITORY, REMOTE\_REPOSITORY | `string` | `"STANDARD_REPOSITORY"` | no |
 | project\_id | The project ID to create the repository | `string` | n/a | yes |
 | remote\_repository\_config | Configuration specific for a Remote Repository. | <pre>object({<br>    description = optional(string)<br>    apt_repository = optional(object({<br>      public_repository = optional(object({<br>        repository_base = string<br>        repository_path = string<br>      }), null)<br>    }), null)<br>    docker_repository = optional(object({<br>      public_repository = optional(string, "DOCKER_HUB")<br>    }), null)<br>    maven_repository = optional(object({<br>      public_repository = optional(string, "MAVEN_CENTRAL")<br>    }), null)<br>    npm_repository = optional(object({<br>      public_repository = optional(string, "NPMJS")<br>    }), null)<br>    python_repository = optional(object({<br>      public_repository = optional(string, "PYPI")<br>    }), null)<br>    yum_repository = optional(object({<br>      public_repository = optional(object({<br>        repository_base = string<br>        repository_path = string<br>      }), null)<br>    }), null)<br>  })</pre> | `null` | no |
 | repository\_id | The repository name | `string` | n/a | yes |
 | virtual\_repository\_config | Configuration specific for a Virtual Repository. | <pre>object({<br>    upstream_policies = optional(object({<br>      id         = string<br>      repository = string<br>      priority   = number<br>    }), null)<br>  })</pre> | `null` | no |
+| vpcsc\_policy | The VPC SC policy for project and location. Possible values are: DENY, ALLOW | `string` | `"ALLOW"` | no |
 
 ## Outputs
 

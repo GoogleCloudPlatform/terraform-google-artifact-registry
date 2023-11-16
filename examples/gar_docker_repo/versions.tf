@@ -14,7 +14,16 @@
  * limitations under the License.
  */
 
-variable "project_id" {
-  description = "The ID of the project in which to provision resources."
-  type        = string
+terraform {
+  required_providers {
+    google = {
+      source  = "hashicorp/google"
+      version = ">= 3.25.0"
+    }
+    google-beta = {
+      source  = "hashicorp/google-beta"
+      version = ">= 3.25.0"
+    }
+  }
+  required_version = ">= 0.13"
 }
