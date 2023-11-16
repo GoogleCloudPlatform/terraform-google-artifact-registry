@@ -29,6 +29,7 @@ module "project" {
     "storage-api.googleapis.com",
     "serviceusage.googleapis.com",
     "artifactregistry.googleapis.com",
-    "secretmanager.googleapis.com"
+    "secretmanager.googleapis.com",
+    "accesscontextmanager.googleapis.com"
   ]
 }
