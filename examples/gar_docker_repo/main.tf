@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-terraform {
-  required_providers {
-    google = {
-      source = "hashicorp/google"
-    }
-  }
-  required_version = ">= 0.13"
+module "artifact_registry" {
+  source = "../.."
+
+  project_id    = var.project_id
+  location      = var.repo_location
+  format        = "DOCKER"
+  repository_id = "first-docker-repo"
 }

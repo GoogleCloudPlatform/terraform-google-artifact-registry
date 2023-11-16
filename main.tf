@@ -147,3 +147,40 @@ resource "google_artifact_registry_repository" "repo" {
     }
   }
 }
+
+resource "google_artifact_registry_vpcsc_config" "repo_vpc_sc" {
+  count = var.enable_vpcsc_policy ? 1 : 0
+
+  provider     = google-beta
+  vpcsc_policy = var.vpcsc_policy
+  location     = google_artifact_registry_repository.repo.location
+  project      = google_artifact_registry_repository.repo.project
+}
+
+resource "google_artifact_registry_repository_iam_member" "readers" {
+  for_each   = toset(contains(keys(var.members), "readers") ? var.members["readers"] : [])
+  project    = google_artifact_registry_repository.repo.project
+  location   = google_artifact_registry_repository.repo.location
+  repository = google_artifact_registry_repository.repo.name
+
+  role   = "roles/artifactregistry.reader"
+  member = each.value
+
+  depends_on = [
+    google_artifact_registry_repository.repo
+  ]
+}
+
+resource "google_artifact_registry_repository_iam_member" "writers" {
+  for_each   = toset(contains(keys(var.members), "writers") ? var.members["writers"] : [])
+  project    = google_artifact_registry_repository.repo.project
+  location   = google_artifact_registry_repository.repo.location
+  repository = google_artifact_registry_repository.repo.name
+
+  role   = "roles/artifactregistry.writer"
+  member = each.value
+
+  depends_on = [
+    google_artifact_registry_repository.repo
+  ]
+}
