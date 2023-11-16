@@ -21,9 +21,4 @@ module "artifact_registry" {
   location      = var.repo_location
   format        = "DOCKER"
   repository_id = "first-docker-repo"
-
-  members = {
-    readers = ["user:prabhuramasamy@google.com"]
-    writers = ["user:prabhuramasamy@google.com"]
-  }
 }
