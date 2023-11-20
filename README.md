@@ -21,7 +21,7 @@ Basic usage of this module is as follows:
 
 ```hcl
 module "artifact_registry" {
-  source  = "terraform-google-modules/artifact-registry/google"
+  source  = "GoogleCloudPlatform/artifact-registry/google"
   version = "~> 0.1"
 
   # Required variables
