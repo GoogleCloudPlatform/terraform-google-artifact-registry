@@ -8,6 +8,17 @@ and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 This changelog is generated automatically based on [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
 
+## 0.1.0 (2023-12-06)
+
+
+### Features
+
+* added gar repo creation ([1766c44](https://github.com/GoogleCloudPlatform/terraform-google-artifact-registry/commit/1766c44d6ee4169d962257df35b0fbef405a1c88))
+* added test case and resources ([6e33b15](https://github.com/GoogleCloudPlatform/terraform-google-artifact-registry/commit/6e33b15b9da3ebfc6e1f5d884ebe9f89939c2008))
+* updated api ([868d59b](https://github.com/GoogleCloudPlatform/terraform-google-artifact-registry/commit/868d59b6634d699d94ea87a79d6f9be5761586f5))
+* updated README ([624488d](https://github.com/GoogleCloudPlatform/terraform-google-artifact-registry/commit/624488d1e97d980e23abdc91797a00577e16c3d2))
+* updated README ([15c7961](https://github.com/GoogleCloudPlatform/terraform-google-artifact-registry/commit/15c796160d0c6f043dd77bbbdb5f1884da0c0e47))
+
 ## [0.1.0](https://github.com/terraform-google-modules/terraform-google-artifact-registry/releases/tag/v0.1.0) - 20XX-YY-ZZ
 
 ### Features
