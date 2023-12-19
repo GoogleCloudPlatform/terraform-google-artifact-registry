@@ -15,7 +15,8 @@
  */
 
 module "artifact_registry" {
-  source = "../.."
+  source  = "GoogleCloudPlatform/artifact-registry/google"
+  version = "~> 0.1"
 
   project_id    = var.project_id
   location      = var.repo_location
