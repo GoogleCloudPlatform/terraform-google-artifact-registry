@@ -48,7 +48,7 @@ variable "description" {
 
 variable "labels" {
   type        = map(string)
-  description = "Lables for the repository"
+  description = "Labels for the repository"
   default     = {}
 }
 
