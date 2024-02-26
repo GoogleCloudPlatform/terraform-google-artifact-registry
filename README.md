@@ -47,7 +47,7 @@ Functional examples are included in the
 | enable\_vpcsc\_policy | Enable VPC SC policy | `bool` | `false` | no |
 | format | The format of packages that are stored in the repository. You can only create alpha formats if you are a member of the alpha user group. | `string` | n/a | yes |
 | kms\_key\_name | The Cloud KMS resource name of the customer managed encryption key that’s used to encrypt the contents of the Repository. Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. This value may not be changed after the Repository has been created | `string` | `null` | no |
-| labels | Lables for the repository | `map(string)` | `{}` | no |
+| labels | Labels for the repository | `map(string)` | `{}` | no |
 | location | The name of the location this repository is located in | `string` | n/a | yes |
 | maven\_config | MavenRepositoryConfig is maven related repository details. Provides additional configuration details for repositories of the maven format type. | <pre>object({<br>    allow_snapshot_overwrites = optional(bool)<br>    version_policy            = optional(string)<br>  })</pre> | `null` | no |
 | members | Artifact Registry Reader and Writer roles for Users/SAs. Key names must be readers and/or writers | `map(list(string))` | `{}` | no |
