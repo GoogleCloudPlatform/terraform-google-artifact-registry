@@ -77,11 +77,11 @@ variable "maven_config" {
 
 variable "virtual_repository_config" {
   type = object({
-    upstream_policies = optional(object({
+    upstream_policies = optional(list(object({
       id         = string
       repository = string
       priority   = number
-    }), null)
+    })), null)
   })
   description = "Configuration specific for a Virtual Repository."
   default     = null
