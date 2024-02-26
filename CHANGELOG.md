@@ -8,6 +8,14 @@ and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 This changelog is generated automatically based on [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
 
+## [0.1.1](https://github.com/GoogleCloudPlatform/terraform-google-artifact-registry/compare/v0.1.0...v0.1.1) (2024-02-26)
+
+
+### Bug Fixes
+
+* updated int test case ([#14](https://github.com/GoogleCloudPlatform/terraform-google-artifact-registry/issues/14)) ([a9cc060](https://github.com/GoogleCloudPlatform/terraform-google-artifact-registry/commit/a9cc06076980b8f0f8eca4b15a5dee40df197254))
+* virtual repository multiple upstream_policies ([#13](https://github.com/GoogleCloudPlatform/terraform-google-artifact-registry/issues/13)) ([1221e4e](https://github.com/GoogleCloudPlatform/terraform-google-artifact-registry/commit/1221e4e1cb318183ff53024d07d963e7a87ecbd4))
+
 ## 0.1.0 (2023-12-06)
 
 
