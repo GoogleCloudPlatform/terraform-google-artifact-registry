@@ -17,7 +17,7 @@ This example illustrates how to use the `artifact-registry` module to create a `
 | artifact\_id | An identifier for the docker repo |
 | create\_time | The time when the repository was created |
 | project\_id | Project ID |
-| repo\_location | Location of the Artifat Registry |
+| repo\_location | Location of the Artifact Registry |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
