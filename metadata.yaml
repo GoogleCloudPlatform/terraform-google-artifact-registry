@@ -1,0 +1,185 @@
+# Copyright 2024 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+apiVersion: blueprints.cloud.google.com/v1alpha1
+kind: BlueprintMetadata
+metadata:
+  name: terraform-google-artifact-registry
+  annotations:
+    config.kubernetes.io/local-config: "true"
+spec:
+  title: terraform-google-artifact-registry
+  source:
+    repo: https://github.com/googlestaging/terraform-google-artifact-registry.git
+    sourceType: git
+  version: 0.1.1
+  actuationTool:
+    type: Terraform
+    version: '>= 0.13'
+  icon: assets/icon.png
+  examples:
+  - name: gar_docker_repo
+    location: examples/gar_docker_repo
+  variables:
+  - name: cleanup_policies
+    description: Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be under 128 characters in length.
+    type: |-
+      map(object({
+          action = optional(string)
+          condition = optional(object({
+            tag_state             = optional(string)
+            tag_prefixes          = optional(list(string))
+            version_name_prefixes = optional(list(string))
+            package_name_prefixes = optional(list(string))
+            older_than            = optional(string)
+            newer_than            = optional(string)
+          }), null)
+          most_recent_versions = optional(object({
+            package_name_prefixes = optional(list(string))
+            keep_count            = optional(number)
+          }), null)
+        }))
+    default: {}
+    required: false
+  - name: cleanup_policy_dry_run
+    description: If true, the cleanup pipeline is prevented from deleting versions in this repository
+    type: bool
+    default: false
+    required: false
+  - name: description
+    description: The user-provided description of the repository
+    type: string
+    required: false
+  - name: docker_config
+    description: Docker repository config contains repository level configuration for the repositories of docker type
+    type: |-
+      object({
+          immutable_tags = optional(bool)
+        })
+    required: false
+  - name: enable_vpcsc_policy
+    description: Enable VPC SC policy
+    type: bool
+    default: false
+    required: false
+  - name: format
+    description: The format of packages that are stored in the repository. You can only create alpha formats if you are a member of the alpha user group.
+    type: string
+    required: true
+  - name: kms_key_name
+    description: 'The Cloud KMS resource name of the customer managed encryption key that’s used to encrypt the contents of the Repository. Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. This value may not be changed after the Repository has been created'
+    type: string
+    required: false
+  - name: labels
+    description: Labels for the repository
+    type: map(string)
+    default: {}
+    required: false
+  - name: location
+    description: The name of the location this repository is located in
+    type: string
+    required: true
+  - name: maven_config
+    description: MavenRepositoryConfig is maven related repository details. Provides additional configuration details for repositories of the maven format type.
+    type: |-
+      object({
+          allow_snapshot_overwrites = optional(bool)
+          version_policy            = optional(string)
+        })
+    required: false
+  - name: members
+    description: Artifact Registry Reader and Writer roles for Users/SAs. Key names must be readers and/or writers
+    type: map(list(string))
+    default: {}
+    required: false
+  - name: mode
+    description: 'The mode configures the repository to serve artifacts from different sources. Default value is STANDARD_REPOSITORY. Possible values are: STANDARD_REPOSITORY, VIRTUAL_REPOSITORY, REMOTE_REPOSITORY'
+    type: string
+    default: STANDARD_REPOSITORY
+    required: false
+  - name: project_id
+    description: The project ID to create the repository
+    type: string
+    required: true
+  - name: remote_repository_config
+    description: Configuration specific for a Remote Repository.
+    type: |-
+      object({
+          description = optional(string)
+          apt_repository = optional(object({
+            public_repository = optional(object({
+              repository_base = string
+              repository_path = string
+            }), null)
+          }), null)
+          docker_repository = optional(object({
+            public_repository = optional(string, "DOCKER_HUB")
+          }), null)
+          maven_repository = optional(object({
+            public_repository = optional(string, "MAVEN_CENTRAL")
+          }), null)
+          npm_repository = optional(object({
+            public_repository = optional(string, "NPMJS")
+          }), null)
+          python_repository = optional(object({
+            public_repository = optional(string, "PYPI")
+          }), null)
+          yum_repository = optional(object({
+            public_repository = optional(object({
+              repository_base = string
+              repository_path = string
+            }), null)
+          }), null)
+        })
+    required: false
+  - name: repository_id
+    description: The repository name
+    type: string
+    required: true
+  - name: virtual_repository_config
+    description: Configuration specific for a Virtual Repository.
+    type: |-
+      object({
+          upstream_policies = optional(list(object({
+            id         = string
+            repository = string
+            priority   = number
+          })), null)
+        })
+    required: false
+  - name: vpcsc_policy
+    description: 'The VPC SC policy for project and location. Possible values are: DENY, ALLOW'
+    type: string
+    default: ALLOW
+    required: false
+  outputs:
+  - name: artifact_id
+    description: an identifier for the resource
+  - name: artifact_name
+    description: an identifier for the resource
+  - name: create_time
+    description: The time when the repository was created.
+  - name: update_time
+    description: The time when the repository was last updated.
+  roles:
+  - level: Project
+    roles:
+    - roles/owner
+  services:
+  - cloudresourcemanager.googleapis.com
+  - storage-api.googleapis.com
+  - serviceusage.googleapis.com
+  - artifactregistry.googleapis.com
+  - secretmanager.googleapis.com
+  - accesscontextmanager.googleapis.com

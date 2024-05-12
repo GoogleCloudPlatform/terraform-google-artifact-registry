@@ -30,6 +30,6 @@ output "project_id" {
 }
 
 output "repo_location" {
-  description = "Location of the Artifat Registry"
+  description = "Location of the Artifact Registry"
   value       = var.repo_location
 }
