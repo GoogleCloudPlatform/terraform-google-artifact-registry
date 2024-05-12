@@ -61,6 +61,18 @@ resource "google_artifact_registry_repository" "repo" {
     content {
       description = remote_repository_config.value.description
 
+      disable_upstream_validation = remote_repository_config.value.disable_upstream_validation
+
+      dynamic "upstream_credentials" {
+        for_each = remote_repository_config.value.upstream_credentials[*]
+        content {
+          username_password_credentials {
+            username                = upstream_credentials.value.username
+            password_secret_version = upstream_credentials.value.password_secret_version
+          }
+        }
+      }
+
       dynamic "apt_repository" {
         for_each = remote_repository_config.value.apt_repository[*]
         content {
@@ -78,6 +90,12 @@ resource "google_artifact_registry_repository" "repo" {
         for_each = remote_repository_config.value.docker_repository[*]
         content {
           public_repository = docker_repository.value.public_repository
+          dynamic "custom_repository" {
+            for_each = docker_repository.value.custom_repository[*]
+            content {
+              uri = custom_repository.value.uri
+            }
+          }
         }
       }
 
@@ -85,6 +103,12 @@ resource "google_artifact_registry_repository" "repo" {
         for_each = remote_repository_config.value.maven_repository[*]
         content {
           public_repository = maven_repository.value.public_repository
+          dynamic "custom_repository" {
+            for_each = maven_repository.value.custom_repository[*]
+            content {
+              uri = custom_repository.value.uri
+            }
+          }
         }
       }
 
@@ -92,6 +116,12 @@ resource "google_artifact_registry_repository" "repo" {
         for_each = remote_repository_config.value.npm_repository[*]
         content {
           public_repository = npm_repository.value.public_repository
+          dynamic "custom_repository" {
+            for_each = npm_repository.value.custom_repository[*]
+            content {
+              uri = custom_repository.value.uri
+            }
+          }
         }
       }
 
@@ -99,6 +129,12 @@ resource "google_artifact_registry_repository" "repo" {
         for_each = remote_repository_config.value.python_repository[*]
         content {
           public_repository = python_repository.value.public_repository
+          dynamic "custom_repository" {
+            for_each = python_repository.value.custom_repository[*]
+            content {
+              uri = custom_repository.value.uri
+            }
+          }
         }
       }
 
