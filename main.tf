@@ -64,7 +64,7 @@ resource "google_artifact_registry_repository" "repo" {
       disable_upstream_validation = remote_repository_config.value.disable_upstream_validation
 
       dynamic "upstream_credentials" {
-        for_each = upstream_credentials.value.upstream_credentials[*]
+        for_each = remote_repository_config.value.upstream_credentials[*]
         content {
           username_password_credentials {
             username                = upstream_credentials.value.username
