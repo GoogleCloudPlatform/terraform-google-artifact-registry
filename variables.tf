@@ -89,7 +89,12 @@ variable "virtual_repository_config" {
 
 variable "remote_repository_config" {
   type = object({
-    description = optional(string)
+    description                 = optional(string)
+    disable_upstream_validation = optional(bool, true)
+    upstream_credentials = optional(object({
+      username                = string
+      password_secret_version = string
+    }), null)
     apt_repository = optional(object({
       public_repository = optional(object({
         repository_base = string
@@ -98,15 +103,27 @@ variable "remote_repository_config" {
     }), null)
     docker_repository = optional(object({
       public_repository = optional(string, "DOCKER_HUB")
+      custom_repository = optional(object({
+        uri = string
+      }), null)
     }), null)
     maven_repository = optional(object({
       public_repository = optional(string, "MAVEN_CENTRAL")
+      custom_repository = optional(object({
+        uri = string
+      }), null)
     }), null)
     npm_repository = optional(object({
       public_repository = optional(string, "NPMJS")
+      custom_repository = optional(object({
+        uri = string
+      }), null)
     }), null)
     python_repository = optional(object({
       public_repository = optional(string, "PYPI")
+      custom_repository = optional(object({
+        uri = string
+      }), null)
     }), null)
     yum_repository = optional(object({
       public_repository = optional(object({
