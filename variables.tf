@@ -102,25 +102,25 @@ variable "remote_repository_config" {
       }), null)
     }), null)
     docker_repository = optional(object({
-      public_repository = optional(string, "DOCKER_HUB")
+      public_repository = optional(string)
       custom_repository = optional(object({
         uri = string
       }), null)
     }), null)
     maven_repository = optional(object({
-      public_repository = optional(string, "MAVEN_CENTRAL")
+      public_repository = optional(string)
       custom_repository = optional(object({
         uri = string
       }), null)
     }), null)
     npm_repository = optional(object({
-      public_repository = optional(string, "NPMJS")
+      public_repository = optional(string)
       custom_repository = optional(object({
         uri = string
       }), null)
     }), null)
     python_repository = optional(object({
-      public_repository = optional(string, "PYPI")
+      public_repository = optional(string)
       custom_repository = optional(object({
         uri = string
       }), null)
