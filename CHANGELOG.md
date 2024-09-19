@@ -8,6 +8,22 @@ and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 This changelog is generated automatically based on [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
 
+## [0.3.0](https://github.com/GoogleCloudPlatform/terraform-google-artifact-registry/compare/v0.2.0...v0.3.0) (2024-09-19)
+
+
+### ⚠ BREAKING CHANGES
+
+* Don't provide defaults for public repositories ([#34](https://github.com/GoogleCloudPlatform/terraform-google-artifact-registry/issues/34))
+
+### Features
+
+* **deps:** Update Terraform Google Provider to v6 (major) ([#38](https://github.com/GoogleCloudPlatform/terraform-google-artifact-registry/issues/38)) ([5b3a2bd](https://github.com/GoogleCloudPlatform/terraform-google-artifact-registry/commit/5b3a2bd498381885f4c1c416801c9c08ce8fca19))
+
+
+### Bug Fixes
+
+* Don't provide defaults for public repositories ([#34](https://github.com/GoogleCloudPlatform/terraform-google-artifact-registry/issues/34)) ([110c340](https://github.com/GoogleCloudPlatform/terraform-google-artifact-registry/commit/110c34033ae74c386aeea8d31293a131c9b9d874))
+
 ## [0.2.0](https://github.com/GoogleCloudPlatform/terraform-google-artifact-registry/compare/v0.1.1...v0.2.0) (2024-05-12)
 
 

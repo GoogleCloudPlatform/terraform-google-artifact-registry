@@ -28,6 +28,6 @@ terraform {
   }
 
   provider_meta "google" {
-    module_name = "blueprints/terraform/artifact-registry/v0.2.0"
+    module_name = "blueprints/terraform/artifact-registry/v0.3.0"
   }
 }
