@@ -99,7 +99,7 @@ spec:
         })
     required: false
   - name: members
-    description: Artifact Registry Reader and Writer roles for Users/SAs. Key names must be readers and/or writers
+    description: Artifact Registry Reader, Writer and repoAdmin roles for Users/SAs. Key names must be readers and/or writers and/or repo admins
     type: map(list(string))
     default: {}
     required: false

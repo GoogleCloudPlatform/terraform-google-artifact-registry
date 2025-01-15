@@ -220,3 +220,17 @@ resource "google_artifact_registry_repository_iam_member" "writers" {
     google_artifact_registry_repository.repo
   ]
 }
+
+resource "google_artifact_registry_repository_iam_member" "admins" {
+  for_each   = toset(contains(keys(var.members), "admins") ? var.members["admins"] : [])
+  project    = google_artifact_registry_repository.repo.project
+  location   = google_artifact_registry_repository.repo.location
+  repository = google_artifact_registry_repository.repo.name
+
+  role   = "roles/artifactregistry.repoAdmin"
+  member = each.value
+
+  depends_on = [
+    google_artifact_registry_repository.repo
+  ]
+}
