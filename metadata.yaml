@@ -30,12 +30,12 @@ spec:
   icon: assets/icon.png
   examples:
   - name: gar_docker_repo
-    location: examples/gar_docker_repo
+    location: disable
   variables:
   - name: cleanup_policies
     description: Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be under 128 characters in length.
     type: |-
-      map(object({
+      
           action = optional(string)
           condition = optional(object({
             tag_state             = optional(string)
@@ -78,12 +78,7 @@ spec:
     type: string
     required: true
   - name: kms_key_name
-    description: 'The Cloud KMS resource name of the customer managed encryption key that’s used to encrypt the contents of the Repository. Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. This value may not be changed after the Repository has been created'
-    type: string
-    required: false
-  - name: labels
-    description: Labels for the repository
-    type: map(string)
+    description: 'The Cloud KMS resource name of the customer managed encryption key that’s used to
     default: {}
     required: false
   - name: location
