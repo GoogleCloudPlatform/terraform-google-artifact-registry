@@ -57,6 +57,7 @@ Functional examples are included in the
 | repository\_id | The repository name | `string` | n/a | yes |
 | virtual\_repository\_config | Configuration specific for a Virtual Repository. | <pre>object({<br>    upstream_policies = optional(list(object({<br>      id         = string<br>      repository = string<br>      priority   = number<br>    })), null)<br>  })</pre> | `null` | no |
 | vpcsc\_policy | The VPC SC policy for project and location. Possible values are: DENY, ALLOW | `string` | `"ALLOW"` | no |
+| vulnerability_scanning_config | Configuration for vulnerability scanning of artifacts stored in this repository | <pre>object({<br/>    enablement_config = string<br/>  })</pre> | `null` | no |
 
 ## Outputs
 
