@@ -5,10 +5,11 @@ The Terraform module handles the creation of repositories in Artifact Registry o
 The resources/services/activations/deletions that this module will create/trigger are:
 
 - Different repositories in Artifact Registry
-    - docker, apt, yum, go, pypi, npm, maven
+  - docker, apt, yum, go, pypi, npm, maven
 - Provide Artifact Registry Reader or Writer roles to the users and service accounts
 
 ## Assumptions and prerequisites
+
 This module assumes that below mentioned prerequisites are in place before consuming the module.
 
 - To deploy this blueprint you must have an active billing account and billing permissions.
