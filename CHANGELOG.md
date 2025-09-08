@@ -8,6 +8,22 @@ and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 This changelog is generated automatically based on [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
 
+## [0.4.0](https://github.com/GoogleCloudPlatform/terraform-google-artifact-registry/compare/v0.3.0...v0.4.0) (2025-09-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* **deps:** Update go modules and/or dev-tools ([#44](https://github.com/GoogleCloudPlatform/terraform-google-artifact-registry/issues/44))
+
+### Features
+
+* **deps:** Update Terraform Google Provider to v7 (major) ([#69](https://github.com/GoogleCloudPlatform/terraform-google-artifact-registry/issues/69)) ([682c713](https://github.com/GoogleCloudPlatform/terraform-google-artifact-registry/commit/682c7130c89d346d2ef6a064bc372f4040514a31))
+
+
+### Miscellaneous Chores
+
+* **deps:** Update go modules and/or dev-tools ([#44](https://github.com/GoogleCloudPlatform/terraform-google-artifact-registry/issues/44)) ([79d3147](https://github.com/GoogleCloudPlatform/terraform-google-artifact-registry/commit/79d3147e119f3d2b1694c76c0557757c14656c7d))
+
 ## [0.3.0](https://github.com/GoogleCloudPlatform/terraform-google-artifact-registry/compare/v0.2.0...v0.3.0) (2024-09-19)
 
 
