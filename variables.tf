@@ -178,12 +178,12 @@ variable "vpcsc_policy" {
 // IAM
 variable "members" {
   type        = map(list(string))
-  description = "Artifact Registry Reader and Writer roles for Users/SAs. Key names must be readers and/or writers"
+  description = "Artifact Registry Reader, Writer and Admin roles for Users/SAs. Key names must be readers and/or writers and/or admins"
   default     = {}
   validation {
     condition = alltrue([
-      for key in keys(var.members) : contains(["readers", "writers"], key)
+      for key in keys(var.members) : contains(["readers", "writers", "admins"], key)
     ])
-    error_message = "The supported keys are readers and writers."
+    error_message = "The supported keys are readers, writers and admins."
   }
 }
