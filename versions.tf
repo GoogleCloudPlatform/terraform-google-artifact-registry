@@ -15,19 +15,19 @@
  */
 
 terraform {
-  required_version = ">= 0.13"
+  required_version = ">= 1.3"
   required_providers {
     google = {
       source  = "hashicorp/google"
-      version = ">= 5.26.0, < 7"
+      version = ">= 5.26.0, < 8"
     }
     google-beta = {
       source  = "hashicorp/google-beta"
-      version = ">= 5.26.0, < 7"
+      version = ">= 5.26.0, < 8"
     }
   }
 
   provider_meta "google" {
-    module_name = "blueprints/terraform/terraform-google-artifact-registry/v0.3.0"
+    module_name = "blueprints/terraform/terraform-google-artifact-registry/v0.4.0"
   }
 }
