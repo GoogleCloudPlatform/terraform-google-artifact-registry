@@ -162,6 +162,13 @@ variable "cleanup_policies" {
   default     = {}
 }
 
+
+variable "ignore_changes" {
+  type        = list(string)
+  description = "List of resource attributes to ignore changes for"
+  default     = []
+}
+
 # VPC SC
 variable "enable_vpcsc_policy" {
   type        = bool

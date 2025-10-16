@@ -182,6 +182,10 @@ resource "google_artifact_registry_repository" "repo" {
       }
     }
   }
+
+  lifecycle {
+    ignore_changes = var.ignore_changes
+  }
 }
 
 resource "google_artifact_registry_vpcsc_config" "repo_vpc_sc" {
