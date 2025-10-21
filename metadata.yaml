@@ -92,7 +92,7 @@ spec:
         connections:
           - source:
               source: github.com/GoogleCloudPlatform/terraform-google-artifact-registry
-              version: ">= 0.5.1"
+              version: ">= 0.5.0"
             spec:
               outputExpr: artifact_id
               inputPath: upstream_policies.repository
