@@ -131,6 +131,9 @@ variable "remote_repository_config" {
         repository_path = string
       }), null)
     }), null)
+    common_repository = optional(object({
+      uri = string
+    }), null)
   })
   description = "Configuration specific for a Remote Repository."
   default     = null
