@@ -187,3 +187,11 @@ variable "members" {
     error_message = "The supported keys are readers and writers."
   }
 }
+
+variable "vulnerability_scanning_config" {
+  type = object({
+    enablement_config = string
+  })
+  description = "Configuration for vulnerability scanning of artifacts stored in this repository"
+  default     = null
+}
