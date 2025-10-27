@@ -94,8 +94,8 @@ spec:
               source: github.com/GoogleCloudPlatform/terraform-google-artifact-registry
               version: ">= 0.5.0"
             spec:
-              outputExpr: artifact_id
-              inputPath: upstream_policies.repository
+              outputExpr: "{\"id\": artifact_name, \"repository\": artifact_id, \"priority\": 10}"
+              inputPath: upstream_policies
       - name: remote_repository_config
         description: Configuration specific for a Remote Repository.
         varType: |-
