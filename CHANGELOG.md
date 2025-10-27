@@ -8,6 +8,13 @@ and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 This changelog is generated automatically based on [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
 
+## [0.6.0](https://github.com/GoogleCloudPlatform/terraform-google-artifact-registry/compare/v0.5.0...v0.6.0) (2025-10-22)
+
+
+### Features
+
+* correct artifact registry adc-connection metadata details to la… ([#77](https://github.com/GoogleCloudPlatform/terraform-google-artifact-registry/issues/77)) ([e82ef19](https://github.com/GoogleCloudPlatform/terraform-google-artifact-registry/commit/e82ef19d7a1242f659cefe3f0b63b19d54099946))
+
 ## [0.5.0](https://github.com/GoogleCloudPlatform/terraform-google-artifact-registry/compare/v0.4.0...v0.5.0) (2025-10-06)
 
 
