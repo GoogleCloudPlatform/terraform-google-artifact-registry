@@ -22,7 +22,7 @@ Basic usage of this module is as follows:
 ```hcl
 module "artifact_registry" {
   source  = "GoogleCloudPlatform/artifact-registry/google"
-  version = "~> 0.6"
+  version = "~> 0.7"
 
   # Required variables
   project_id    = "<PROJECT ID>"
