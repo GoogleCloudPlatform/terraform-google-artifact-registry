@@ -188,8 +188,10 @@ spec:
     outputs:
       - name: artifact_id
         description: an identifier for the resource
+        type: string
       - name: artifact_name
         description: an identifier for the resource
+        type: string
       - name: create_time
         description: The time when the repository was created.
       - name: update_time
