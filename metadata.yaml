@@ -91,7 +91,7 @@ spec:
             })
         connections:
           - source:
-              source: github.com/GoogleCloudPlatform/terraform-google-artifact-registry
+              source: github.com/Ayushi001/terraform-google-artifact-registry
               version: ">= 0.5.0"
             spec:
               outputExpr: "{\"id\": artifact_name, \"repository\": artifact_id, \"priority\": 10}"
