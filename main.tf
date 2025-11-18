@@ -220,3 +220,10 @@ resource "google_artifact_registry_repository_iam_member" "writers" {
     google_artifact_registry_repository.repo
   ]
 }
+
+resource "google_project_iam_member" "roles" {
+  for_each = toset(var.service_account_project_roles)
+  project  = var.project_id
+  role     = each.value
+  member   = "serviceAccount:service-${var.project_id}@gcp-sa-artifactregistry.iam.gserviceaccount.com"
+}

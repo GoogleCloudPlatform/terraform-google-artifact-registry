@@ -24,7 +24,7 @@ spec:
     source:
       repo: https://github.com/GoogleCloudPlatform/terraform-google-artifact-registry.git
       sourceType: git
-    version: 0.8.0
+    version: 0.9.0
     actuationTool:
       flavor: Terraform
       version: ">= 1.3"
@@ -173,6 +173,16 @@ spec:
               }), null)
             }))
         defaultValue: {}
+      - name: service_account_project_roles
+        description: Roles to grant to the newly created artifact registry SA in specified project.
+        varType: list(string)
+        defaultValue: []
+        connections:
+          - source:
+              source: github.com/GoogleCloudPlatform/terraform-google-secret-manager//modules/simple-secret
+              version: ">= 0.5.1"
+            spec:
+              outputExpr: "[\"roles/secretmanager.secretAccessor\"]"
       - name: enable_vpcsc_policy
         description: Enable VPC SC policy
         varType: bool
