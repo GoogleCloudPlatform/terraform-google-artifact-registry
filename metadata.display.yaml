@@ -72,6 +72,9 @@ spec:
         repository_id:
           name: repository_id
           title: Repository Id
+        service_account_project_roles:
+          name: service_account_project_roles
+          title: Service Account Project Roles
         virtual_repository_config:
           name: virtual_repository_config
           title: Virtual Repository Config

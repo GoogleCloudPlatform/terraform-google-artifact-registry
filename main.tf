@@ -14,6 +14,10 @@
  * limitations under the License.
  */
 
+data "google_project" "project" {
+  project_id = var.project_id 
+}
+
 resource "google_artifact_registry_repository" "repo" {
   provider = google-beta
 
@@ -219,4 +223,11 @@ resource "google_artifact_registry_repository_iam_member" "writers" {
   depends_on = [
     google_artifact_registry_repository.repo
   ]
+}
+
+resource "google_project_iam_member" "roles" {
+  for_each = toset(var.service_account_project_roles)
+  project  = var.project_id
+  role     = each.value
+  member   = "serviceAccount:service-${data.google_project.project.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com"
 }
