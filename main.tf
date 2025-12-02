@@ -15,7 +15,7 @@
  */
 
 data "google_project" "project" {
-  project_id = var.project_id 
+  project_id = var.project_id
 }
 
 resource "google_artifact_registry_repository" "repo" {
