@@ -182,7 +182,13 @@ spec:
               source: github.com/GoogleCloudPlatform/terraform-google-secret-manager//modules/simple-secret
               version: ">= 0.5.1"
             spec:
-              outputExpr: "[\"roles/secretmanager.secretAccessor\"]"
+              outputExpr: "[\"roles/artifactregistry.serviceAgent\", \"roles/secretmanager.secretAccessor\"]"
+            connections:
+          - source:
+              source: github.com/GoogleCloudPlatform/terraform-google-artifact-registry
+              version: ">= 0.5.0"
+            spec:
+              outputExpr: "[\"roles/artifactregistry.serviceAgent\"]"
       - name: enable_vpcsc_policy
         description: Enable VPC SC policy
         varType: bool
