@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 
-
 resource "google_artifact_registry_repository" "repo" {
   provider = google-beta
 
