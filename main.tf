@@ -228,8 +228,10 @@ resource "google_project_service_identity" "artifact_registry_sa" {
 }
 
 resource "google_project_iam_member" "roles" {
-  for_each = toset(var.service_account_project_roles)
-  project  = var.project_id
-  role     = each.value
-  member   = google_project_service_identity.artifact_registry_sa.member
+  for_each = toset(
+    concat(var.service_account_project_roles, ["roles/artifactregistry.serviceAgent"])
+  )
+  project = var.project_id
+  role    = each.value
+  member  = google_project_service_identity.artifact_registry_sa.member
 }
