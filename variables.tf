@@ -162,6 +162,12 @@ variable "cleanup_policies" {
   default     = {}
 }
 
+variable "service_agent_project_roles" {
+  type        = list(string)
+  description = "Roles to grant to the newly created artifact registry SA in specified project."
+  default     = []
+}
+
 # VPC SC
 variable "enable_vpcsc_policy" {
   type        = bool
