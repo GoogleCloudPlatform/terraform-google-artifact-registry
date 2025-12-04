@@ -173,7 +173,7 @@ spec:
               }), null)
             }))
         defaultValue: {}
-      - name: service_account_project_roles
+      - name: service_agent_project_roles
         description: Roles to grant to the newly created artifact registry SA in specified project.
         varType: list(string)
         defaultValue: []
