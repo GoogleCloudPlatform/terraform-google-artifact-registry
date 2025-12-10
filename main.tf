@@ -150,6 +150,13 @@ resource "google_artifact_registry_repository" "repo" {
           }
         }
       }
+
+      dynamic "common_repository" {
+        for_each = remote_repository_config.value.common_repository[*]
+        content {
+          uri = common_repository.value.uri
+        }
+      }
     }
   }
 
