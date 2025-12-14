@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-output "artifact_id" {
+output "repository_id" {
   description = "An identifier for the docker repo"
-  value       = module.artifact_registry.artifact_id
+  value       = module.artifact_registry.repository_id
 }
 
 output "create_time" {

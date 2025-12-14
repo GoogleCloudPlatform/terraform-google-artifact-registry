@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-output "artifact_id" {
+output "repository_id" {
   description = "an identifier for the resource"
   value       = google_artifact_registry_repository.repo.id
 }
 
-output "artifact_name" {
+output "repository_name" {
   description = "an identifier for the resource"
   value       = google_artifact_registry_repository.repo.name
 }

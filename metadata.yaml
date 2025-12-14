@@ -202,15 +202,13 @@ spec:
         varType: map(list(string))
         defaultValue: {}
     outputs:
-      - name: artifact_id
-        description: an identifier for the resource
-        type: string
-      - name: artifact_name
-        description: an identifier for the resource
-        type: string
       - name: create_time
         description: The time when the repository was created.
         type: string
+      - name: repository_id
+        description: an identifier for the resource
+      - name: repository_name
+        description: an identifier for the resource
       - name: update_time
         description: The time when the repository was last updated.
         type: string
