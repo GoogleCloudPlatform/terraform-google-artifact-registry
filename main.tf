@@ -182,6 +182,13 @@ resource "google_artifact_registry_repository" "repo" {
       }
     }
   }
+
+  dynamic "vulnerability_scanning_config" {
+    for_each = var.vulnerability_scanning_config[*]
+    content {
+      enablement_config = vulnerability_scanning_config.value.enablement_config
+    }
+  }
 }
 
 resource "google_artifact_registry_vpcsc_config" "repo_vpc_sc" {

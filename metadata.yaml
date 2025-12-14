@@ -183,6 +183,12 @@ spec:
               version: ">= 0.5.1"
             spec:
               outputExpr: "[\"roles/secretmanager.secretAccessor\"]"
+      - name: vulnerability_scanning_config
+        description: "Enable to automatically perform vulnerability scanning for artifacts pushed to this repository. Possible values are: INHERITED, DISABLED"
+        varType: |-
+          object({
+              enablement_config = optional(string)
+            })
       - name: enable_vpcsc_policy
         description: Enable VPC SC policy
         varType: bool

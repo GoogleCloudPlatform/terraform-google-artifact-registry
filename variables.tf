@@ -168,6 +168,14 @@ variable "service_agent_project_roles" {
   default     = []
 }
 
+variable "vulnerability_scanning_config" {
+  type = object({
+    enablement_config = optional(string)
+  })
+  description = "Enable to automatically perform vulnerability scanning for artifacts pushed to this repository. Possible values are: INHERITED, DISABLED"
+  default     = null
+}
+
 # VPC SC
 variable "enable_vpcsc_policy" {
   type        = bool
