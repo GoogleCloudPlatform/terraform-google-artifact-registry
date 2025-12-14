@@ -58,14 +58,15 @@ Functional examples are included in the
 | service\_agent\_project\_roles | Roles to grant to the newly created artifact registry SA in specified project. | `list(string)` | `[]` | no |
 | virtual\_repository\_config | Configuration specific for a Virtual Repository. | <pre>object({<br>    upstream_policies = optional(list(object({<br>      id         = string<br>      repository = string<br>      priority   = number<br>    })), null)<br>  })</pre> | `null` | no |
 | vpcsc\_policy | The VPC SC policy for project and location. Possible values are: DENY, ALLOW | `string` | `"ALLOW"` | no |
+| vulnerability\_scanning\_config | Enable to automatically perform vulnerability scanning for artifacts pushed to this repository. Possible values are: INHERITED, DISABLED | <pre>object({<br>    enablement_config = optional(string)<br>  })</pre> | `null` | no |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| artifact\_id | an identifier for the resource |
-| artifact\_name | an identifier for the resource |
 | create\_time | The time when the repository was created. |
+| repository\_id | an identifier for the resource |
+| repository\_name | an identifier for the resource |
 | update\_time | The time when the repository was last updated. |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

@@ -27,15 +27,15 @@ func TestDockerRepoCreation(t *testing.T) {
 	gar_docker_repoT := tft.NewTFBlueprintTest(t)
 
 	gar_docker_repoT.DefineVerify(func(assert *assert.Assertions) {
-		artifactID := gar_docker_repoT.GetStringOutput("artifact_id")
+		repositoryID := gar_docker_repoT.GetStringOutput("repository_id")
 		projectID := gar_docker_repoT.GetStringOutput("project_id")
 		repo_location := gar_docker_repoT.GetStringOutput("repo_location")
 		create_time := gar_docker_repoT.GetStringOutput("create_time")
 
-		repo_cmd := gcloud.Run(t, "artifacts repositories describe", gcloud.WithCommonArgs([]string{artifactID, "--project", projectID, "--location", repo_location, "--format", "json"}))
+		repo_cmd := gcloud.Run(t, "artifacts repositories describe", gcloud.WithCommonArgs([]string{repositoryID, "--project", projectID, "--location", repo_location, "--format", "json"}))
 
 		// T01: Verify if the Artifact Registry is created successfully
-		assert.Equal(artifactID, repo_cmd.Get("name").String(), fmt.Sprintf("Artifact ID mismatch. Artifact Registry is not created successfully."))
+		assert.Equal(repositoryID, repo_cmd.Get("name").String(), fmt.Sprintf("Artifact ID mismatch. Artifact Registry is not created successfully."))
 
 		// T02: Verify Artifact Registry create time
 		assert.Equal(create_time, repo_cmd.Get("createTime").String(), fmt.Sprintf("Create Time mismatch. Artifact Registry is not created successfully."))
