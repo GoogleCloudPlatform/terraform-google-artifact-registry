@@ -173,16 +173,6 @@ spec:
               }), null)
             }))
         defaultValue: {}
-      - name: service_agent_project_roles
-        description: Roles to grant to the newly created artifact registry SA in specified project.
-        varType: list(string)
-        defaultValue: []
-        connections:
-          - source:
-              source: github.com/GoogleCloudPlatform/terraform-google-secret-manager//modules/simple-secret
-              version: ">= 0.5.1"
-            spec:
-              outputExpr: "[\"roles/secretmanager.secretAccessor\"]"
       - name: enable_vpcsc_policy
         description: Enable VPC SC policy
         varType: bool
@@ -198,16 +188,12 @@ spec:
     outputs:
       - name: artifact_id
         description: an identifier for the resource
-        type: string
       - name: artifact_name
         description: an identifier for the resource
-        type: string
       - name: create_time
         description: The time when the repository was created.
-        type: string
       - name: update_time
         description: The time when the repository was last updated.
-        type: string
   requirements:
     roles:
       - level: Project
