@@ -220,18 +220,3 @@ resource "google_artifact_registry_repository_iam_member" "writers" {
     google_artifact_registry_repository.repo
   ]
 }
-
-resource "google_project_service_identity" "artifact_registry_sa" {
-  provider = google-beta
-  project  = var.project_id
-  service  = "artifactregistry.googleapis.com"
-}
-
-resource "google_project_iam_member" "roles" {
-  for_each = toset(
-    concat(var.service_agent_project_roles, ["roles/artifactregistry.serviceAgent"])
-  )
-  project = var.project_id
-  role    = each.value
-  member  = google_project_service_identity.artifact_registry_sa.member
-}
