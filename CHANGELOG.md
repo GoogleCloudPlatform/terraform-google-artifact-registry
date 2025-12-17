@@ -8,6 +8,20 @@ and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 This changelog is generated automatically based on [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
 
+## [0.8.1](https://github.com/GoogleCloudPlatform/terraform-google-artifact-registry/compare/v0.8.0...v0.8.1) (2025-12-15)
+
+
+### Bug Fixes
+
+* Revert "feat: adding types to outputs and service_account_project_roles input to provide secret manager accessor role on secret manager connection" ([#87](https://github.com/GoogleCloudPlatform/terraform-google-artifact-registry/issues/87)) ([d71133e](https://github.com/GoogleCloudPlatform/terraform-google-artifact-registry/commit/d71133e60b3b8f942a81e694f01158ce7b744464))
+
+## [0.8.0](https://github.com/GoogleCloudPlatform/terraform-google-artifact-registry/compare/v0.7.0...v0.8.0) (2025-12-04)
+
+
+### Features
+
+* adding types to outputs and service_account_project_roles input to provide secret manager accessor role on secret manager connection ([#81](https://github.com/GoogleCloudPlatform/terraform-google-artifact-registry/issues/81)) ([20600fb](https://github.com/GoogleCloudPlatform/terraform-google-artifact-registry/commit/20600fb6eeb9ef9842ccd348dc118b200da5d274))
+
 ## [0.7.0](https://github.com/GoogleCloudPlatform/terraform-google-artifact-registry/compare/v0.6.0...v0.7.0) (2025-10-27)
 
 
