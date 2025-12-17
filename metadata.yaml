@@ -188,17 +188,25 @@ spec:
     outputs:
       - name: artifact_id
         description: an identifier for the resource
+        type: string
       - name: artifact_name
         description: an identifier for the resource
+        type: string
       - name: create_time
         description: The time when the repository was created.
+        type: string
       - name: update_time
         description: The time when the repository was last updated.
+        type: string
   requirements:
     roles:
       - level: Project
         roles:
-          - roles/owner
+          - roles/artifactregistry.admin
+          - roles/iam.serviceAccountAdmin
+          - roles/iam.serviceAccountUser
+          - roles/resourcemanager.projectIamAdmin
+          - roles/serviceusage.serviceUsageAdmin
     services:
       - cloudresourcemanager.googleapis.com
       - storage-api.googleapis.com

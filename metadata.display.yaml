@@ -78,3 +78,7 @@ spec:
         vpcsc_policy:
           name: vpcsc_policy
           title: Vpcsc Policy
+    runtime:
+      outputs:
+        artifact_id:
+          visibility: VISIBILITY_ROOT
