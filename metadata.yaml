@@ -143,13 +143,6 @@ spec:
                 }), null)
               }), null)
             })
-        connections:
-          - source:
-              source: github.com/GoogleCloudPlatform/terraform-google-secret-manager//modules/simple-secret
-              version: ">= 0.5.1"
-            spec:
-              outputExpr: version
-              inputPath: upstream_credentials.password_secret_version
       - name: cleanup_policy_dry_run
         description: If true, the cleanup pipeline is prevented from deleting versions in this repository
         varType: bool
