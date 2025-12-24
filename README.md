@@ -65,7 +65,6 @@ Functional examples are included in the
 | artifact\_id | an identifier for the resource |
 | artifact\_name | an identifier for the resource |
 | create\_time | The time when the repository was created. |
-| update\_time | The time when the repository was last updated. |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 

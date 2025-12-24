@@ -192,8 +192,6 @@ spec:
         description: an identifier for the resource
       - name: create_time
         description: The time when the repository was created.
-      - name: update_time
-        description: The time when the repository was last updated.
   requirements:
     roles:
       - level: Project
