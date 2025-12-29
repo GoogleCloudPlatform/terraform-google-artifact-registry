@@ -1,4 +1,4 @@
-# Copyright 2024 Google LLC
+# Copyright 2025 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,184 +19,195 @@ metadata:
   annotations:
     config.kubernetes.io/local-config: "true"
 spec:
-  title: terraform-google-artifact-registry
-  source:
-    repo: https://github.com/googlestaging/terraform-google-artifact-registry.git
-    sourceType: git
-  version: 0.4.0
-  actuationTool:
-    type: Terraform
-    version: '>= 0.13'
-  icon: assets/icon.png
-  examples:
-  - name: gar_docker_repo
-    location: examples/gar_docker_repo
-  variables:
-  - name: cleanup_policies
-    description: Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be under 128 characters in length.
-    type: |-
-      map(object({
-          action = optional(string)
-          condition = optional(object({
-            tag_state             = optional(string)
-            tag_prefixes          = optional(list(string))
-            version_name_prefixes = optional(list(string))
-            package_name_prefixes = optional(list(string))
-            older_than            = optional(string)
-            newer_than            = optional(string)
-          }), null)
-          most_recent_versions = optional(object({
-            package_name_prefixes = optional(list(string))
-            keep_count            = optional(number)
-          }), null)
-        }))
-    default: {}
-    required: false
-  - name: cleanup_policy_dry_run
-    description: If true, the cleanup pipeline is prevented from deleting versions in this repository
-    type: bool
-    default: false
-    required: false
-  - name: description
-    description: The user-provided description of the repository
-    type: string
-    required: false
-  - name: docker_config
-    description: Docker repository config contains repository level configuration for the repositories of docker type
-    type: |-
-      object({
-          immutable_tags = optional(bool)
-        })
-    required: false
-  - name: enable_vpcsc_policy
-    description: Enable VPC SC policy
-    type: bool
-    default: false
-    required: false
-  - name: format
-    description: The format of packages that are stored in the repository. You can only create alpha formats if you are a member of the alpha user group.
-    type: string
-    required: true
-  - name: kms_key_name
-    description: 'The Cloud KMS resource name of the customer managed encryption key that’s used to encrypt the contents of the Repository. Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. This value may not be changed after the Repository has been created'
-    type: string
-    required: false
-  - name: labels
-    description: Labels for the repository
-    type: map(string)
-    default: {}
-    required: false
-  - name: location
-    description: The name of the location this repository is located in
-    type: string
-    required: true
-  - name: maven_config
-    description: MavenRepositoryConfig is maven related repository details. Provides additional configuration details for repositories of the maven format type.
-    type: |-
-      object({
-          allow_snapshot_overwrites = optional(bool)
-          version_policy            = optional(string)
-        })
-    required: false
-  - name: members
-    description: Artifact Registry Reader and Writer roles for Users/SAs. Key names must be readers and/or writers
-    type: map(list(string))
-    default: {}
-    required: false
-  - name: mode
-    description: 'The mode configures the repository to serve artifacts from different sources. Default value is STANDARD_REPOSITORY. Possible values are: STANDARD_REPOSITORY, VIRTUAL_REPOSITORY, REMOTE_REPOSITORY'
-    type: string
-    default: STANDARD_REPOSITORY
-    required: false
-  - name: project_id
-    description: The project ID to create the repository
-    type: string
-    required: true
-  - name: remote_repository_config
-    description: Configuration specific for a Remote Repository.
-    type: |-
-      object({
-          description                 = optional(string)
-          disable_upstream_validation = optional(bool, true)
-          upstream_credentials = optional(object({
-            username                = string
-            password_secret_version = string
-          }), null)
-          apt_repository = optional(object({
-            public_repository = optional(object({
-              repository_base = string
-              repository_path = string
-            }), null)
-          }), null)
-          docker_repository = optional(object({
-            public_repository = optional(string, "DOCKER_HUB")
-            custom_repository = optional(object({
-              uri = string
-            }), null)
-          }), null)
-          maven_repository = optional(object({
-            public_repository = optional(string, "MAVEN_CENTRAL")
-            custom_repository = optional(object({
-              uri = string
-            }), null)
-          }), null)
-          npm_repository = optional(object({
-            public_repository = optional(string, "NPMJS")
-            custom_repository = optional(object({
-              uri = string
-            }), null)
-          }), null)
-          python_repository = optional(object({
-            public_repository = optional(string, "PYPI")
-            custom_repository = optional(object({
-              uri = string
-            }), null)
-          }), null)
-          yum_repository = optional(object({
-            public_repository = optional(object({
-              repository_base = string
-              repository_path = string
-            }), null)
-          }), null)
-        })
-    required: false
-  - name: repository_id
-    description: The repository name
-    type: string
-    required: true
-  - name: virtual_repository_config
-    description: Configuration specific for a Virtual Repository.
-    type: |-
-      object({
-          upstream_policies = optional(list(object({
-            id         = string
-            repository = string
-            priority   = number
-          })), null)
-        })
-    required: false
-  - name: vpcsc_policy
-    description: 'The VPC SC policy for project and location. Possible values are: DENY, ALLOW'
-    type: string
-    default: ALLOW
-    required: false
-  outputs:
-  - name: artifact_id
-    description: an identifier for the resource
-  - name: artifact_name
-    description: an identifier for the resource
-  - name: create_time
-    description: The time when the repository was created.
-  - name: update_time
-    description: The time when the repository was last updated.
-  roles:
-  - level: Project
+  info:
+    title: terraform-google-artifact-registry
+    source:
+      repo: https://github.com/GoogleCloudPlatform/terraform-google-artifact-registry.git
+      sourceType: git
+    version: 0.8.1
+    actuationTool:
+      flavor: Terraform
+      version: ">= 1.3"
+    description: {}
+    icon: assets/icon.png
+  content:
+    examples:
+      - name: gar_docker_repo
+        location: examples/gar_docker_repo
+  interfaces:
+    variables:
+      - name: project_id
+        description: The project ID to create the repository
+        varType: string
+        required: true
+      - name: repository_id
+        description: The repository name
+        varType: string
+        required: true
+      - name: location
+        description: The name of the location this repository is located in
+        varType: string
+        required: true
+      - name: format
+        description: The format of packages that are stored in the repository. You can only create alpha formats if you are a member of the alpha user group.
+        varType: string
+        required: true
+      - name: mode
+        description: "The mode configures the repository to serve artifacts from different sources. Default value is STANDARD_REPOSITORY. Possible values are: STANDARD_REPOSITORY, VIRTUAL_REPOSITORY, REMOTE_REPOSITORY"
+        varType: string
+        defaultValue: STANDARD_REPOSITORY
+      - name: description
+        description: The user-provided description of the repository
+        varType: string
+      - name: labels
+        description: Labels for the repository
+        varType: map(string)
+        defaultValue: {}
+      - name: kms_key_name
+        description: "The Cloud KMS resource name of the customer managed encryption key that’s used to encrypt the contents of the Repository. Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. This value may not be changed after the Repository has been created"
+        varType: string
+      - name: docker_config
+        description: Docker repository config contains repository level configuration for the repositories of docker type
+        varType: |-
+          object({
+              immutable_tags = optional(bool)
+            })
+      - name: maven_config
+        description: MavenRepositoryConfig is maven related repository details. Provides additional configuration details for repositories of the maven format type.
+        varType: |-
+          object({
+              allow_snapshot_overwrites = optional(bool)
+              version_policy            = optional(string)
+            })
+      - name: virtual_repository_config
+        description: Configuration specific for a Virtual Repository.
+        varType: |-
+          object({
+              upstream_policies = optional(list(object({
+                id         = string
+                repository = string
+                priority   = number
+              })), null)
+            })
+        connections:
+          - source:
+              source: github.com/GoogleCloudPlatform/terraform-google-artifact-registry
+              version: ">= 0.5.0"
+            spec:
+              outputExpr: "{\"id\": artifact_name, \"repository\": artifact_id, \"priority\": 10}"
+              inputPath: upstream_policies
+      - name: remote_repository_config
+        description: Configuration specific for a Remote Repository.
+        varType: |-
+          object({
+              description                 = optional(string)
+              disable_upstream_validation = optional(bool, true)
+              upstream_credentials = optional(object({
+                username                = string
+                password_secret_version = string
+              }), null)
+              apt_repository = optional(object({
+                public_repository = optional(object({
+                  repository_base = string
+                  repository_path = string
+                }), null)
+              }), null)
+              docker_repository = optional(object({
+                public_repository = optional(string)
+                custom_repository = optional(object({
+                  uri = string
+                }), null)
+              }), null)
+              maven_repository = optional(object({
+                public_repository = optional(string)
+                custom_repository = optional(object({
+                  uri = string
+                }), null)
+              }), null)
+              npm_repository = optional(object({
+                public_repository = optional(string)
+                custom_repository = optional(object({
+                  uri = string
+                }), null)
+              }), null)
+              python_repository = optional(object({
+                public_repository = optional(string)
+                custom_repository = optional(object({
+                  uri = string
+                }), null)
+              }), null)
+              yum_repository = optional(object({
+                public_repository = optional(object({
+                  repository_base = string
+                  repository_path = string
+                }), null)
+              }), null)
+            })
+        connections:
+          - source:
+              source: github.com/GoogleCloudPlatform/terraform-google-secret-manager//modules/simple-secret
+              version: ">= 0.5.1"
+            spec:
+              outputExpr: version
+              inputPath: upstream_credentials.password_secret_version
+      - name: cleanup_policy_dry_run
+        description: If true, the cleanup pipeline is prevented from deleting versions in this repository
+        varType: bool
+        defaultValue: false
+      - name: cleanup_policies
+        description: Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be under 128 characters in length.
+        varType: |-
+          map(object({
+              action = optional(string)
+              condition = optional(object({
+                tag_state             = optional(string)
+                tag_prefixes          = optional(list(string))
+                version_name_prefixes = optional(list(string))
+                package_name_prefixes = optional(list(string))
+                older_than            = optional(string)
+                newer_than            = optional(string)
+              }), null)
+              most_recent_versions = optional(object({
+                package_name_prefixes = optional(list(string))
+                keep_count            = optional(number)
+              }), null)
+            }))
+        defaultValue: {}
+      - name: enable_vpcsc_policy
+        description: Enable VPC SC policy
+        varType: bool
+        defaultValue: false
+      - name: vpcsc_policy
+        description: "The VPC SC policy for project and location. Possible values are: DENY, ALLOW"
+        varType: string
+        defaultValue: ALLOW
+      - name: members
+        description: Artifact Registry Reader and Writer roles for Users/SAs. Key names must be readers and/or writers
+        varType: map(list(string))
+        defaultValue: {}
+    outputs:
+      - name: artifact_id
+        description: an identifier for the resource
+      - name: artifact_name
+        description: an identifier for the resource
+      - name: create_time
+        description: The time when the repository was created.
+      - name: update_time
+        description: The time when the repository was last updated.
+  requirements:
     roles:
-    - roles/owner
-  services:
-  - cloudresourcemanager.googleapis.com
-  - storage-api.googleapis.com
-  - serviceusage.googleapis.com
-  - artifactregistry.googleapis.com
-  - secretmanager.googleapis.com
-  - accesscontextmanager.googleapis.com
+      - level: Project
+        roles:
+          - roles/owner
+    services:
+      - cloudresourcemanager.googleapis.com
+      - storage-api.googleapis.com
+      - serviceusage.googleapis.com
+      - artifactregistry.googleapis.com
+      - secretmanager.googleapis.com
+      - accesscontextmanager.googleapis.com
+    providerVersions:
+      - source: hashicorp/google
+        version: ">= 5.26.0, < 8"
+      - source: hashicorp/google-beta
+        version: ">= 5.26.0, < 8"
