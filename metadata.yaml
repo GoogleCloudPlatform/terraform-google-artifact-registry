@@ -188,9 +188,6 @@ spec:
       - name: create_time
         description: The time when the repository was created.
         type: string
-      - name: update_time
-        description: The time when the repository was last updated.
-        type: string
   requirements:
     roles:
       - level: Project
