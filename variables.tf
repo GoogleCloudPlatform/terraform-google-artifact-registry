@@ -95,6 +95,9 @@ variable "remote_repository_config" {
       username                = string
       password_secret_version = string
     }), null)
+    common_repository = optional(object({
+      uri = string
+    }), null)
     apt_repository = optional(object({
       public_repository = optional(object({
         repository_base = string
@@ -103,27 +106,15 @@ variable "remote_repository_config" {
     }), null)
     docker_repository = optional(object({
       public_repository = optional(string)
-      custom_repository = optional(object({
-        uri = string
-      }), null)
     }), null)
     maven_repository = optional(object({
       public_repository = optional(string)
-      custom_repository = optional(object({
-        uri = string
-      }), null)
     }), null)
     npm_repository = optional(object({
       public_repository = optional(string)
-      custom_repository = optional(object({
-        uri = string
-      }), null)
     }), null)
     python_repository = optional(object({
       public_repository = optional(string)
-      custom_repository = optional(object({
-        uri = string
-      }), null)
     }), null)
     yum_repository = optional(object({
       public_repository = optional(object({
