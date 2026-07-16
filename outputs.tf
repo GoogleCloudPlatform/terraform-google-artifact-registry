@@ -33,3 +33,8 @@ output "update_time" {
   description = "The time when the repository was last updated."
   value       = google_artifact_registry_repository.repo.update_time
 }
+
+output "uri" {
+  description = "The url for the repository"
+  value       = google_artifact_registry_repository.repo.registry_uri
+}
