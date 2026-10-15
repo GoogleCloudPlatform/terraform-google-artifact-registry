@@ -59,6 +59,7 @@ spec:
       - name: description
         description: The user-provided description of the repository
         varType: string
+        defaultValue: null
       - name: labels
         description: Labels for the repository
         varType: map(string)
@@ -66,12 +67,14 @@ spec:
       - name: kms_key_name
         description: "The Cloud KMS resource name of the customer managed encryption key that’s used to encrypt the contents of the Repository. Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. This value may not be changed after the Repository has been created"
         varType: string
+        defaultValue: null
       - name: docker_config
         description: Docker repository config contains repository level configuration for the repositories of docker type
         varType: |-
           object({
               immutable_tags = optional(bool)
             })
+        defaultValue: null
       - name: maven_config
         description: MavenRepositoryConfig is maven related repository details. Provides additional configuration details for repositories of the maven format type.
         varType: |-
@@ -79,6 +82,7 @@ spec:
               allow_snapshot_overwrites = optional(bool)
               version_policy            = optional(string)
             })
+        defaultValue: null
       - name: virtual_repository_config
         description: Configuration specific for a Virtual Repository.
         varType: |-
@@ -89,6 +93,7 @@ spec:
                 priority   = number
               })), null)
             })
+        defaultValue: null
         connections:
           - source:
               source: github.com/GoogleCloudPlatform/terraform-google-artifact-registry
@@ -143,6 +148,7 @@ spec:
                 }), null)
               }), null)
             })
+        defaultValue: null
       - name: cleanup_policy_dry_run
         description: If true, the cleanup pipeline is prevented from deleting versions in this repository
         varType: bool
