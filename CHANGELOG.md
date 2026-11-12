@@ -8,6 +8,18 @@ and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 This changelog is generated automatically based on [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
 
+## [0.9.0](https://github.com/GoogleCloudPlatform/terraform-google-artifact-registry/compare/v0.8.2...v0.9.0) (2026-11-12)
+
+
+### Features
+
+* **deps:** Update Terraform Google Provider to v8 ([#97](https://github.com/GoogleCloudPlatform/terraform-google-artifact-registry/issues/97)) ([9f8ab88](https://github.com/GoogleCloudPlatform/terraform-google-artifact-registry/commit/9f8ab88b5f6c4d63668bd5ca09deebd57831b898))
+
+
+### Bug Fixes
+
+* populate null defaultValue in artifact-registry blueprint metadata ([#98](https://github.com/GoogleCloudPlatform/terraform-google-artifact-registry/issues/98)) ([243f7e4](https://github.com/GoogleCloudPlatform/terraform-google-artifact-registry/commit/243f7e4e1d92888948bc53d7f3b1e5d665462c09))
+
 ## [0.8.2](https://github.com/GoogleCloudPlatform/terraform-google-artifact-registry/compare/v0.8.1...v0.8.2) (2026-01-06)
 
 
